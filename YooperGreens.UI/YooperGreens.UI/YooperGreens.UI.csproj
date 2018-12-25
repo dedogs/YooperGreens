@@ -6,9 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier-Typescript" Version="2.1.258" />
-    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\YooperGreensApp.Infrastructure.Data\YooperGreensApp.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>
