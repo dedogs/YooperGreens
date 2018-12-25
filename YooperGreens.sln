@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{00473B90-A3B2-4F73-952F-C67CBC10ED41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{692DA7F2-FD95-4DE5-BB33-D324933327D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{856704B2-DC39-46F5-B28F-9A7D174BD183}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YooperGreens.UI", "YooperGreens.UI\YooperGreens.UI\YooperGreens.UI.csproj", "{50E24BEF-0A46-4317-89CA-C149620EBAA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YooperGreensApp.Core", "YooperGreensApp.Core\YooperGreensApp.Core.csproj", "{D8DB693C-5EF8-47C5-8E79-01EB8910A30E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YooperGreensApp.Core.Entity", "YooperGreensApp.Core.Entity\YooperGreensApp.Core.Entity.csproj", "{35E2D5F5-B4E5-4CA6-A199-3CBF005A09CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YooperGreensApp.Infrastructure.Data", "YooperGreensApp.Infrastructure.Data\YooperGreensApp.Infrastructure.Data.csproj", "{FA547F15-583F-45BB-BF29-DEFE5F09B6DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50E24BEF-0A46-4317-89CA-C149620EBAA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E24BEF-0A46-4317-89CA-C149620EBAA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E24BEF-0A46-4317-89CA-C149620EBAA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E24BEF-0A46-4317-89CA-C149620EBAA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8DB693C-5EF8-47C5-8E79-01EB8910A30E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DB693C-5EF8-47C5-8E79-01EB8910A30E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DB693C-5EF8-47C5-8E79-01EB8910A30E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DB693C-5EF8-47C5-8E79-01EB8910A30E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E2D5F5-B4E5-4CA6-A199-3CBF005A09CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E2D5F5-B4E5-4CA6-A199-3CBF005A09CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E2D5F5-B4E5-4CA6-A199-3CBF005A09CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E2D5F5-B4E5-4CA6-A199-3CBF005A09CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA547F15-583F-45BB-BF29-DEFE5F09B6DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA547F15-583F-45BB-BF29-DEFE5F09B6DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA547F15-583F-45BB-BF29-DEFE5F09B6DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA547F15-583F-45BB-BF29-DEFE5F09B6DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{50E24BEF-0A46-4317-89CA-C149620EBAA3} = {856704B2-DC39-46F5-B28F-9A7D174BD183}
+		{D8DB693C-5EF8-47C5-8E79-01EB8910A30E} = {00473B90-A3B2-4F73-952F-C67CBC10ED41}
+		{35E2D5F5-B4E5-4CA6-A199-3CBF005A09CF} = {00473B90-A3B2-4F73-952F-C67CBC10ED41}
+		{FA547F15-583F-45BB-BF29-DEFE5F09B6DA} = {692DA7F2-FD95-4DE5-BB33-D324933327D4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {172968B7-50E6-4322-ACFF-83D0ADDE820B}
+	EndGlobalSection
+EndGlobal
