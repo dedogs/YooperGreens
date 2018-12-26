@@ -8,6 +8,11 @@ namespace YooperGreensApp.Core.Entity.Jut.Seeds
 {
     public class SeedMapJut
     {
+        public static IEnumerable<SeedJut> Jut(IEnumerable<Seed> seeds)
+        {
+            return seeds.Select(s => Jut(s));
+        }
+
         public static SeedJut Jut(Seed seed) => new SeedJut
         {
             Description = seed.Description,
@@ -20,7 +25,7 @@ namespace YooperGreensApp.Core.Entity.Jut.Seeds
             {
                 Link = s.Supplier.Link,
                 Name = s.Supplier.Name,
-                SeedLink = s.SeedLink.ToString(),
+                SeedLink = s.SeedLink,
                 SupplierId = s.SupplierId
             }).ToList() : null
         };

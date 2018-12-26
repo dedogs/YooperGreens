@@ -45,7 +45,7 @@ namespace YooperGreens.UI
             {
                 using (IServiceScope scope = app.ApplicationServices.CreateScope())
                 {
-                    YooperGreensDbInitializer.SeedDb(scope.ServiceProvider.GetService<YooperGreensDbContext>());
+                    //YooperGreensDbInitializer.SeedDb(scope.ServiceProvider.GetService<YooperGreensDbContext>());
                 }
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
