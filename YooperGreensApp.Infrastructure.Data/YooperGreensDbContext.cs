@@ -9,7 +9,7 @@ using YooperGreensApp.Infrastructure.Data.Configuration;
 
 namespace YooperGreensApp.Infrastructure.Data
 {
-    public class YooperGreensDbContext : IdentityDbContext<User>, IYooperGreensDbContext
+    public class YooperGreensDbContext : DbContext, IYooperGreensDbContext
     {
         public YooperGreensDbContext()
         {

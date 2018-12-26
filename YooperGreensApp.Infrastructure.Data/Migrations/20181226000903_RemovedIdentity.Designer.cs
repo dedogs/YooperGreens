@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YooperGreensApp.Infrastructure.Data;
 
 namespace YooperGreensApp.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(YooperGreensDbContext))]
-    partial class YooperGreensDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181226000903_RemovedIdentity")]
+    partial class RemovedIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

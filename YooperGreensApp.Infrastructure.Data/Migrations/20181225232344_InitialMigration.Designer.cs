@@ -10,7 +10,7 @@ using YooperGreensApp.Infrastructure.Data;
 namespace YooperGreensApp.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(YooperGreensDbContext))]
-    [Migration("20181225215201_InitialMigration")]
+    [Migration("20181225232344_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
