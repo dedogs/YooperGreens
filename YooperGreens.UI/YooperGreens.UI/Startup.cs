@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using YooperGreensApp.Infrastructure.Data;
 
 namespace YooperGreens.UI
 {
@@ -31,6 +33,7 @@ namespace YooperGreens.UI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<YooperGreensDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -40,7 +43,12 @@ namespace YooperGreens.UI
         {
             if (env.IsDevelopment())
             {
+                using (IServiceScope scope = app.ApplicationServices.CreateScope())
+                {
+                    YooperGreensDbInitializer.SeedDb(scope.ServiceProvider.GetService<YooperGreensDbContext>());
+                }
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -52,7 +60,12 @@ namespace YooperGreens.UI
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Green}/{action=Index}/{id?}");
+            });
         }
     }
 }

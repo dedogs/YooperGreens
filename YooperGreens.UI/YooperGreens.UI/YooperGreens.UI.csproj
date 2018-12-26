@@ -2,7 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Script\site.ts" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier-Typescript" Version="2.1.258" />
@@ -13,6 +18,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\YooperGreensApp.Infrastructure.Data\YooperGreensApp.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\Script\site.ts" />
   </ItemGroup>
 
 </Project>
