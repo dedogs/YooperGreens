@@ -8,6 +8,5 @@ namespace YooperGreensApp.Core.DomainService
     public interface ISupplierRepository : IRepository<Supplier, Guid>
     {
         Supplier FindByIdInclude(Guid supplierId);
-        SeedSupplier FindByIdInclude(Guid supplierId, Guid seedId);
     }
 }

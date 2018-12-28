@@ -7,7 +7,6 @@ namespace YooperGreensApp.Core.DomainService
 {
     public interface ISeedRepository : IRepository<Seed, Guid>
     {
-        IEnumerable<Seed> ReadAllInclude();
         Seed FindByIdInclude(Guid seedId);
     }
 }
