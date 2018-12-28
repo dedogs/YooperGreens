@@ -13,9 +13,9 @@ namespace YooperGreensApp.Core.Entity.Jut.Suppliers
         {
             return new SupplierJut
             {
-                Link = supplier.Link,
                 Rank = supplier.Rank,
                 AffiliateLink = supplier.AffiliateLink,
+                SupplierLink = supplier.SupplierLink,
                 Name = supplier.Name,
                 SupplierId = supplier.SupplierId,
                 Seeds = supplier.SeedSuppliers != null ? supplier.SeedSuppliers.Select(s => new SeedJut
@@ -23,7 +23,11 @@ namespace YooperGreensApp.Core.Entity.Jut.Suppliers
                     Description = s.Seed.Description,
                     Name = s.Seed.Name,
                     SeedId = s.Seed.SeedId,
-                    SeedLink = s.SeedLink,
+                    SeedLink = s.Seed.SeedLink,
+                    SeedSupplierLink = s.SeedSupplierLink,
+                    GrowingInfo = s.Seed.GrowingInfo,
+                    Maximum = s.Seed.Maximum,
+                    Minimum = s.Seed.Minimum,
                     Costs = CostMapJut.Jut(s.Costs)
                 }).ToList() : null
 
@@ -40,20 +44,23 @@ namespace YooperGreensApp.Core.Entity.Jut.Suppliers
             Supplier suppliers = new Supplier
             {
                 SupplierId = supplierJut.SupplierId,
-                Link = supplierJut.Link,
+                SupplierLink = supplierJut.SupplierLink,
                 Rank = supplierJut.Rank,
                 AffiliateLink = supplierJut.AffiliateLink,
                 Name = supplierJut.Name,
                 SeedSuppliers = supplierJut.Seeds != null ? supplierJut.Seeds.Select(s => new SeedSupplier
                 {
+                    SeedId = s.SeedId,
+                    SeedSupplierLink = s.SeedSupplierLink,
+                    Costs = CostMapJut.JutToCost(s.Costs),
                     Seed = new Seed
                     {
                         Description = s.Description,
                         Name = s.Name,
-                        SeedId = s.SeedId
-                    },
-                    SeedLink = s.SeedLink,
-                    Costs = CostMapJut.JutToCost(s.Costs)
+                        Maximum = s.Maximum,
+                        Minimum = s.Minimum,
+                        SeedId = s.SeedId,
+                    }
                 }).ToList() : null
             };
 

@@ -8,7 +8,5 @@ namespace YooperGreensApp.Core.Entity.Jut.Costs
         public Unit Unit { get; set; }
         public int Size { get; set; }
         public decimal Price { get; set; }
-        public Guid SeedId { get; set; }
-        public Guid SupplierId { get; set; }
     }
 }

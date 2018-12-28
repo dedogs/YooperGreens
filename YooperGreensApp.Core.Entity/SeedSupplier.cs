@@ -14,7 +14,7 @@ namespace YooperGreensApp.Core.Entity
         public Guid SeedId { get; set; }
         public Guid SupplierId { get; set; }
         public Seed Seed { get; set; }
-        public string SeedLink { get; set; }
+        public string SeedSupplierLink { get; set; }
         public List<Cost> Costs { get; set; }
         public Supplier Supplier { get; set; }
     }

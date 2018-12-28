@@ -26,6 +26,7 @@ namespace YooperGreensApp.Core.Entity
         public string Name { get; set; }
         public string Description { get; set; }
         public GrowingInfo GrowingInfo { get; set; }
+        public string SeedLink { get; set; }
         public int Maximum { get; set; }
         public int Minimum { get; set; }
         public IEnumerable<SeedSupplier> SeedSuppliers { get; set; }

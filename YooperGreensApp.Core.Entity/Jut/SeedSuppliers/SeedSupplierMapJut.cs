@@ -18,7 +18,7 @@ namespace YooperGreensApp.Core.Entity.Jut.SeedSuppliers
                 SeedId = seedSupplier.SeedId,
                 SupplierId = seedSupplier.SupplierId,
                 Costs = seedSupplier.Costs,
-                SeedLink = seedSupplier.SeedLink
+                SeedLink = seedSupplier.SeedSupplierLink
             };
         }
         public static IEnumerable<SeedSupplier> JutToSupplier(IEnumerable<SeedSupplierJut> seedSupplierJuts)
@@ -29,7 +29,7 @@ namespace YooperGreensApp.Core.Entity.Jut.SeedSuppliers
         {
             return new SeedSupplier
             {
-                SeedLink = seedSupplierJut.SeedLink,
+                SeedSupplierLink = seedSupplierJut.SeedLink,
                 SupplierId = seedSupplierJut.SupplierId,
                 SeedId = seedSupplierJut.SeedId,
                 Seed = SeedMapJut.JutToSeed(seedSupplierJut.Seed),

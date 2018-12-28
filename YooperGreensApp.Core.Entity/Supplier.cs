@@ -11,7 +11,7 @@ namespace YooperGreensApp.Core.Entity
         }
 
         public Guid SupplierId { get; set; }
-        public string Link { get; set; }
+        public string SupplierLink { get; set; }
         public int Rank { get; set; }
         public string AffiliateLink { get; set; }
         public string Name { get; set; }

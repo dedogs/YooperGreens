@@ -12,5 +12,6 @@ namespace YooperGreensApp.Core.Entity.Jut.GrowingInfos
         public int Minimum { get; set; }
         public string SeedLink { get; set; }
         public GrowingInfo GrowingInfo { get; set; }
+
     }
 }

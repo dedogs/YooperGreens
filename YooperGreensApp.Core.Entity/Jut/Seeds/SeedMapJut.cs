@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using YooperGreensApp.Core.Entity.Jut.Costs;
 using YooperGreensApp.Core.Entity.Jut.Suppliers;
 
 namespace YooperGreensApp.Core.Entity.Jut.Seeds
@@ -23,9 +24,11 @@ namespace YooperGreensApp.Core.Entity.Jut.Seeds
             GrowingInfo = seed.GrowingInfo,
             Suppliers = seed.SeedSuppliers != null ? seed.SeedSuppliers.Select(s => new SupplierJut
             {
-                Link = s.Supplier.Link,
+                SeedSupplierLink = s.SeedSupplierLink,
                 Name = s.Supplier.Name,
-                SeedLink = s.SeedLink,
+                Rank = s.Supplier.Rank,
+                AffiliateLink = s.Supplier.AffiliateLink,
+                SupplierLink = s.Supplier.SupplierLink,
                 SupplierId = s.SupplierId
             }).ToList() : null
         };
@@ -45,13 +48,16 @@ namespace YooperGreensApp.Core.Entity.Jut.Seeds
             SeedSuppliers = seedJut.Suppliers != null ? seedJut.Suppliers.Select(s => new SeedSupplier
             {
                 SupplierId = s.SupplierId,
+                SeedSupplierLink = s.SeedSupplierLink,
+                Costs = CostMapJut.JutToCost(s.Costs),
                 Supplier = new Supplier
                 {
-                    Link = s.Link,
+                    SupplierLink = s.SupplierLink,
                     Name = s.Name,
+                    Rank = s.Rank,
+                    AffiliateLink = s.AffiliateLink,
                     SupplierId = s.SupplierId,
-                },
-                SeedLink = s.SeedLink
+                }
             }).ToList() : null
         };
 
