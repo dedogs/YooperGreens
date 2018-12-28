@@ -29,7 +29,8 @@ namespace YooperGreensApp.Core.Entity.Jut.Seeds
                 Rank = s.Supplier.Rank,
                 AffiliateLink = s.Supplier.AffiliateLink,
                 SupplierLink = s.Supplier.SupplierLink,
-                SupplierId = s.SupplierId
+                SupplierId = s.SupplierId,
+                Costs = CostMapJut.Jut(s.Costs)
             }).ToList() : null
         };
         public static IEnumerable<Seed> JutToSeed(IEnumerable<SeedJut> seedJuts)
