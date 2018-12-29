@@ -9,6 +9,11 @@ namespace YooperGreensApp.Core.Entity.Jut.Suppliers
 {
     public class SupplierMapJut
     {
+        public static IEnumerable<SupplierJut> Jut(IEnumerable<Supplier> suppliers)
+        {
+            return suppliers.Select(s => Jut(s));
+        }
+
         public static SupplierJut Jut(Supplier supplier)
         {
             return new SupplierJut

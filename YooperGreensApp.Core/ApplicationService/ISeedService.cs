@@ -10,12 +10,12 @@ namespace YooperGreensApp.Core.ApplicationService
 {
     public interface ISeedService
     {
+        int Count();
         Task<SeedJut> CreateSeedAsync(SeedJut seed);
         Task<SeedJut> FindSeedByIdAsync(Guid seedId);
-        Task<List<SeedJut>> GetAllSeedsIncludeAsync();
+        Task<SeedJut> FindSeedByIdIncludeAsync(Guid seedId);
         Task<List<SeedJut>> GetAllSeedsAsync();
         Task<SeedJut> UpdateSeedAsync(SeedJut seed);
         Task<SeedJut> DeleteSeedAsync(SeedJut seed);
-        Task<List<SeedJut>> PagerAsync(IFilterData filter);
     }
 }

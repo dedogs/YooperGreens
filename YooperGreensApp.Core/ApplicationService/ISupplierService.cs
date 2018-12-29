@@ -11,13 +11,12 @@ namespace YooperGreensApp.Core.ApplicationService
 {
     public interface ISupplierService
     {
+        int Count();
         Task<SupplierJut> CreateSupplierAsync(SupplierJut supplier);
         Task<SupplierJut> FindSupplierByIdAsync(Guid supplierId);
-        Task<SeedSupplier> FindSupplierByIdAsync(Guid supplierId, Guid seedId);
-        Task<List<SupplierJut>> GetAllSuppliersIncludeAsync();
+        Task<SupplierJut> FindSupplierByIdIncludeAsync(Guid supplierId);
         Task<List<SupplierJut>> GetAllSuppliersAsync();
         Task<SupplierJut> UpdateSupplierAsync(SupplierJut supplier);
         Task<SupplierJut> DeleteSupplierAsync(SupplierJut supplier);
-        Task<List<SupplierJut>> PagerAsync(IFilterData filter);
     }
 }
