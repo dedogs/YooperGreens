@@ -10,7 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using YooperGreensApp.Core.ApplicationService;
+using YooperGreensApp.Core.ApplicationService.Service;
+using YooperGreensApp.Core.DomainService;
 using YooperGreensApp.Infrastructure.Data;
+using YooperGreensApp.Infrastructure.Data.Repositories;
 
 namespace YooperGreens.UI
 {
@@ -26,6 +30,14 @@ namespace YooperGreens.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IYooperGreensDbContext, YooperGreensDbContext>();
+            services.AddScoped<ISeedRepository, SeedRepository>();
+            services.AddScoped<ISupplierRepository, SupplierRepository>();
+            services.AddScoped<ICostRepository, CostRepository>();
+            services.AddScoped<ISeedService, SeedService>();
+            services.AddScoped<ISupplierService, SupplierService>();
+            services.AddScoped<ICostService, CostService>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -45,7 +57,7 @@ namespace YooperGreens.UI
             {
                 using (IServiceScope scope = app.ApplicationServices.CreateScope())
                 {
-                    YooperGreensDbInitializer.SeedDb(scope.ServiceProvider.GetService<YooperGreensDbContext>());
+                    //YooperGreensDbInitializer.SeedDb(scope.ServiceProvider.GetService<YooperGreensDbContext>());
                 }
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
