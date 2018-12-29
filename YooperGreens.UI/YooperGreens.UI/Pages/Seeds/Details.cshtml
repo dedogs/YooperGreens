@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.Seed.SeedLink)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Seed.SeedLink)
+            <a href="@Model.Seed.SeedLink" title="@Model.Seed.Name">@Model.Seed.Name</a>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Seed.Maximum)
@@ -40,6 +40,36 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Seed.Minimum)
+        </dd>
+        <dt>
+            Supplers
+        </dt>
+        <dd>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Seed.Suppliers[0].Name)
+                        </th>
+                        <th>
+                            Supplier Link
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var supplier in Model.Seed.Suppliers)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => supplier.Name)
+                            </td>
+                            <td>
+                                <a href="@supplier.SupplierLink" title="@supplier.Name">@supplier.Name</a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                    </table>
         </dd>
     </dl>
 </div>

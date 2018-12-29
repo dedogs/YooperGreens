@@ -22,6 +22,7 @@ namespace YooperGreensApp.Core.Entity.Jut.Seeds
             Maximum = seed.Maximum,
             Minimum = seed.Minimum,
             GrowingInfo = seed.GrowingInfo,
+            SeedLink = seed.SeedLink,
             Suppliers = seed.SeedSuppliers != null ? seed.SeedSuppliers.Select(s => new SupplierJut
             {
                 SeedSupplierLink = s.SeedSupplierLink,
@@ -46,6 +47,7 @@ namespace YooperGreensApp.Core.Entity.Jut.Seeds
             Minimum = seedJut.Minimum,
             Maximum = seedJut.Maximum,
             GrowingInfo = seedJut.GrowingInfo,
+            SeedLink = seedJut.SeedLink,
             SeedSuppliers = seedJut.Suppliers != null ? seedJut.Suppliers.Select(s => new SeedSupplier
             {
                 SupplierId = s.SupplierId,
