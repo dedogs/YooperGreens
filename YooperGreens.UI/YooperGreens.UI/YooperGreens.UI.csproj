@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Script\Core\ApplicationService\Service\SeedService.ts" />
+    <Content Remove="wwwroot\Script\Core\RepositoryService\IRepository.ts" />
+    <Content Remove="wwwroot\Script\Core\RepositoryService\ISeedRepository.ts" />
+    <Content Remove="wwwroot\Script\Core\ApplicationService\ISeedService.ts" />
+    <Content Remove="wwwroot\Script\Entity\Cost.ts" />
+    <Content Remove="wwwroot\Script\Entity\GrowingInfo.ts" />
+    <Content Remove="wwwroot\Script\Entity\Seed.ts" />
+    <Content Remove="wwwroot\Script\Infrastructure\SeedRepository.ts" />
     <Content Remove="wwwroot\Script\site.ts" />
   </ItemGroup>
 
@@ -22,10 +30,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\Script\Seeds\" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\Script\Core\ApplicationService\Service\SeedService.ts" />
+    <TypeScriptCompile Include="wwwroot\Script\Core\RepositoryService\IRepository.ts" />
+    <TypeScriptCompile Include="wwwroot\Script\Core\RepositoryService\ISeedRepository.ts" />
+    <TypeScriptCompile Include="wwwroot\Script\Core\ApplicationService\ISeedService.ts" />
+    <TypeScriptCompile Include="wwwroot\Script\Entity\Cost.ts" />
+    <TypeScriptCompile Include="wwwroot\Script\Entity\GrowingInfo.ts" />
+    <TypeScriptCompile Include="wwwroot\Script\Entity\Seed.ts" />
+    <TypeScriptCompile Include="wwwroot\Script\Infrastructure\SeedRepository.ts" />
     <TypeScriptCompile Include="wwwroot\Script\site.ts" />
   </ItemGroup>
 
