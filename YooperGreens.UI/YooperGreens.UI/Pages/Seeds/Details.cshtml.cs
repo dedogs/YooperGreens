@@ -23,14 +23,14 @@ namespace YooperGreens.UI.Pages.Seeds
 
         public SeedJut Seed { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid id)
+        public async Task<IActionResult> OnGetAsync(Guid seedId)
         {
-            if (id == null)
+            if (seedId == null)
             {
                 return NotFound();
             }
 
-            Seed = await _service.FindSeedByIdIncludeAsync(id);
+            Seed = await _service.FindSeedByIdIncludeAsync(seedId);
 
             if (Seed == null)
             {

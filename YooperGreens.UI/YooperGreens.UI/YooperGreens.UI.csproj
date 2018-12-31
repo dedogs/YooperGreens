@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Script\Seeds\" />
+    <Folder Include="wwwroot\js\Infrastructure\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,8 +41,8 @@
     <TypeScriptCompile Include="wwwroot\Script\Entity\Cost.ts" />
     <TypeScriptCompile Include="wwwroot\Script\Entity\GrowingInfo.ts" />
     <TypeScriptCompile Include="wwwroot\Script\Entity\Seed.ts" />
-    <TypeScriptCompile Include="wwwroot\Script\Infrastructure\SeedRepository.ts" />
-    <TypeScriptCompile Include="wwwroot\Script\site.ts" />
+    <TypeScriptCompile Include="wwwroot\Script\Infrastructure\JQuery\SeedRepository.ts" />
+    <TypeScriptCompile Include="wwwroot\Script\Pages\Seed\Details.ts" />
   </ItemGroup>
 
 </Project>

@@ -1,106 +1,106 @@
-"use strict";
-exports.__esModule = true;
-var Utility_1 = require("../Utility");
 var GScope;
 (function (GScope) {
-    var EventManager = /** @class */ (function () {
-        function EventManager(context) {
-            var _this = this;
-            this.attach = function (action) {
-                var element;
-                if (_this.context.eventActions instanceof EventManager.EventAction) {
-                    _this.context.eventActions = [_this.context.eventActions];
-                }
-                if (Utility_1.Utility.is(_this.context.eventActions).arry().not()) {
-                    throw "Event actions on context is missing or invalid.";
-                }
-                for (var i = 0; i < _this.context.eventActions.length; i++) {
-                    if (_this.context.eventActions[i] instanceof EventManager.EventAction) {
-                        _this.context.eventActions[i].events = _this.checkEventAction(_this.context.eventActions[i].events);
-                        element = _this.context.eventActions[i].element;
-                        _this.context.eventActions[i].events.forEach(function (event) {
-                            if (element) {
-                                element[(action || "add") + "EventListener"](event, _this.raiseEvent, false);
+    var Module;
+    (function (Module) {
+        var EventManager = /** @class */ (function () {
+            function EventManager(context) {
+                var _this = this;
+                this.attach = function (action) {
+                    var element;
+                    if (_this.context.eventActions instanceof EventManager.EventAction) {
+                        _this.context.eventActions = [_this.context.eventActions];
+                    }
+                    if (GScope.Utility.is(_this.context.eventActions).arry().not()) {
+                        throw "Event actions on context is missing or invalid.";
+                    }
+                    for (var i = 0; i < _this.context.eventActions.length; i++) {
+                        if (_this.context.eventActions[i] instanceof EventManager.EventAction) {
+                            _this.context.eventActions[i].events = _this.checkEventAction(_this.context.eventActions[i].events);
+                            element = _this.context.eventActions[i].element;
+                            _this.context.eventActions[i].events.forEach(function (event) {
+                                if (element) {
+                                    element[(action || "add") + "EventListener"](event, _this.raiseEvent, false);
+                                }
+                            });
+                        }
+                    }
+                };
+                this.context = context;
+                this.raiseEvent = function (e) {
+                    var id = _this.context[e.target.id] ? e.target.id : e.currentTarget.id, target = _this.context[id], executeTarget = true, result = null;
+                    if (target) {
+                        if (_this.context.callbackHandler && _this.context.callbackHandler[e.type]) {
+                            executeTarget = _this.context.callbackHandler[e.type](e);
+                        }
+                        else {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+                        if (executeTarget) {
+                            if (GScope.Utility.is(target).fn().ok()) {
+                                result = target.call(_this.context, e);
                             }
-                        });
-                    }
-                }
-            };
-            this.context = context;
-            this.raiseEvent = function (e) {
-                var id = _this.context[e.target.id] ? e.target.id : e.currentTarget.id, target = _this.context[id], executeTarget = true, result = null;
-                if (target) {
-                    if (_this.context.callbackHandler && _this.context.callbackHandler[e.type]) {
-                        executeTarget = _this.context.callbackHandler[e.type](e);
-                    }
-                    else {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                    if (executeTarget) {
-                        if (Utility_1.Utility.is(target).fn().ok()) {
-                            result = target.call(_this.context, e);
+                            else if (target[e.type]) {
+                                result = target[e.type].call(_this.context, e);
+                            }
                         }
-                        else if (target[e.type]) {
-                            result = target[e.type].call(_this.context, e);
+                        if (_this.context.callbackComplete && GScope.Utility.is(_this.context.callbackComplete[id]).fn().ok()) {
+                            _this.context.callbackComplete[id](result);
                         }
                     }
-                    if (_this.context.callbackComplete && Utility_1.Utility.is(_this.context.callbackComplete[id]).fn().ok()) {
-                        _this.context.callbackComplete[id](result);
-                    }
-                }
-                return result;
+                    return result;
+                };
+            }
+            EventManager.prototype.checkEventAction = function (events) {
+                return events ? GScope.Utility.is(events).str().ok() ? [events] : events : ["click", "change"];
             };
-        }
-        EventManager.prototype.checkEventAction = function (events) {
-            return events ? Utility_1.Utility.is(events).str().ok() ? [events] : events : ["click", "change"];
-        };
-        EventManager.prototype.add = function (eventAction) {
-            var _this = this;
-            if (this.context.eventActions instanceof EventManager.EventAction) {
-                this.context.eventActions = [this.context.eventActions];
-            }
-            if (eventAction instanceof EventManager.EventAction) {
-                eventAction = [eventAction];
-            }
-            else if (Utility_1.Utility.is(eventAction).obj().ok() && eventAction.name) {
-                eventAction = [new EventManager.EventAction(eventAction)];
-            }
-            else if (Utility_1.Utility.is(eventAction).arry().not()) {
-                throw "Only EventAction or objects instances allowed.";
-            }
-            this.context.eventActions = this.context.eventActions || [];
-            eventAction.forEach(function (event) {
-                _this.context.eventActions.push(event);
-            });
-        };
-        EventManager.prototype.remove = function () {
-            if (this.context.eventActions.length === 0) {
-                return false;
-            }
-            this.attach("remove");
-            return true;
-        };
-        return EventManager;
-    }());
-    GScope.EventManager = EventManager;
-    (function (EventManager) {
-        var EventAction = /** @class */ (function () {
-            function EventAction(objectName, element, events) {
-                if (Utility_1.Utility.is(objectName).str().ok()) {
-                    this.name = objectName;
-                    this.element = element;
-                    this.events = Utility_1.Utility.is(events).str().ok() ? [events] : events;
+            EventManager.prototype.add = function (eventAction) {
+                var _this = this;
+                if (this.context.eventActions instanceof EventManager.EventAction) {
+                    this.context.eventActions = [this.context.eventActions];
                 }
-                else if (Utility_1.Utility.is(objectName).obj().ok()) {
-                    this.name = objectName.name || null;
-                    this.element = objectName.element || null;
-                    this.events = objectName.events ? Utility_1.Utility.is(events).str().ok() ? [objectName.events] : objectName.events : null;
+                if (eventAction instanceof EventManager.EventAction) {
+                    eventAction = [eventAction];
                 }
-            }
-            return EventAction;
+                else if (GScope.Utility.is(eventAction).obj().ok() && eventAction.name) {
+                    eventAction = [new EventManager.EventAction(eventAction)];
+                }
+                else if (GScope.Utility.is(eventAction).arry().not()) {
+                    throw "Only EventAction or objects instances allowed.";
+                }
+                this.context.eventActions = this.context.eventActions || [];
+                eventAction.forEach(function (event) {
+                    _this.context.eventActions.push(event);
+                });
+            };
+            EventManager.prototype.remove = function () {
+                if (this.context.eventActions.length === 0) {
+                    return false;
+                }
+                this.attach("remove");
+                return true;
+            };
+            return EventManager;
         }());
-        EventManager.EventAction = EventAction;
-    })(EventManager = GScope.EventManager || (GScope.EventManager = {}));
+        Module.EventManager = EventManager;
+        (function (EventManager) {
+            var EventAction = /** @class */ (function () {
+                function EventAction(objectName, element, events) {
+                    if (GScope.Utility.is(objectName).str().ok()) {
+                        this.name = objectName;
+                        this.element = element;
+                        this.events = GScope.Utility.is(events).str().ok() ? [events] : events;
+                    }
+                    else if (GScope.Utility.is(objectName).obj().ok()) {
+                        this.name = objectName.name || null;
+                        this.element = objectName.element || null;
+                        this.events = objectName.events ? GScope.Utility.is(events).str().ok() ? [objectName.events] : objectName.events : null;
+                    }
+                }
+                return EventAction;
+            }());
+            EventManager.EventAction = EventAction;
+        })(EventManager = Module.EventManager || (Module.EventManager = {}));
+    })(Module = GScope.Module || (GScope.Module = {}));
 })(GScope || (GScope = {}));
 //# sourceMappingURL=EventManager.js.map

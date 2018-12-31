@@ -1,26 +1,29 @@
-﻿import { ISeedService } from "../ISeedService";
-import { Seed } from "../../../Entity/Seed";
-
-export class SeedService implements ISeedService {
-    Count(): number {
-        return 0;
-    }
-    CreateSeed(seed: Seed): Seed {
-        return new Seed();
-    }
-    DeleteSeed(seed: Seed): Seed {
-        return new Seed();
-    }
-    FindSeedById(seedId: string): Seed {
-        return new Seed();
-    }
-    FindSeedByIdInclude(seedId: string): Seed {
-        return new Seed();
-    }
-    GetAllSeeds(): Seed[] {
-        return [];
-    }
-    UpdateSeed(seed: Seed): Seed {
-        return new Seed();
+﻿
+namespace GScope {
+    export namespace ApplicationService {
+        export class SeedService implements ISeedService {
+            Count(): number {
+                return 0;
+            }
+            CreateSeed(seed: Entity.Seed): Entity.Seed {
+                return new Entity.Seed();
+            }
+            DeleteSeed(seed: Entity.Seed): Entity.Seed {
+                return new Entity.Seed();
+            }
+            FindSeedById(seedId: string): Entity.Seed {
+                return new Entity.Seed();
+            }
+            FindSeedByIdInclude(seedId: string): Entity.Seed {
+                GScope.Infrastructure.SeedRepository
+                return new Entity.Seed();
+            }
+            GetAllSeeds(): Entity.Seed[] {
+                return [];
+            }
+            UpdateSeed(seed: Entity.Seed): Entity.Seed {
+                return new Entity.Seed();
+            }
+        }
     }
 }

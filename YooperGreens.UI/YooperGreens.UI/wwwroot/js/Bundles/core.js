@@ -1,3 +1,4 @@
+//# sourceMappingURL=ISeedService.js.map
 var GScope;
 (function (GScope) {
     var ApplicationService;
@@ -33,3 +34,5 @@ var GScope;
     })(ApplicationService = GScope.ApplicationService || (GScope.ApplicationService = {}));
 })(GScope || (GScope = {}));
 //# sourceMappingURL=SeedService.js.map
+//# sourceMappingURL=IRepository.js.map
+//# sourceMappingURL=ISeedRepository.js.map

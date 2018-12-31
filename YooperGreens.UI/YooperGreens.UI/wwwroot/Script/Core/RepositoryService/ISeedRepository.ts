@@ -1,5 +1,7 @@
-﻿import { Seed } from "../../Entity/Seed";
-
-export interface ISeedRepository extends IRepository<Seed, string> {
-    FindByIdInclude(seedId:string): Seed
+﻿namespace GScope {
+    export namespace RepositoryService {
+        export interface ISeedRepository extends IRepository<Entity.Seed, string> {
+            FindByIdInclude(seedId: string): JQueryXHR
+        }
+    }
 }

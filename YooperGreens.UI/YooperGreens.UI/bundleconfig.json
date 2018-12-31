@@ -1,3 +1,45 @@
 [
-
+  {
+    "outputFileName": "wwwroot/js/Bundles/Library.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jQuery.min.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js"
+    ],
+    "minify": { "enabled": false }
+  },
+  {
+    "outputFileName": "wwwroot/js/Bundles/application.js",
+    "inputFiles": [
+      "wwwroot/js/Application/**/*.js"
+    ],
+    "minify": { "enabled": true }
+  },
+  {
+    "outputFileName": "wwwroot/js/Bundles/core.js",
+    "inputFiles": [
+      "wwwroot/js/Core/**/*.js"
+    ],
+    "minify": { "enabled": true }
+  },
+  {
+    "outputFileName": "wwwroot/js/Bundles/entity.js",
+    "inputFiles": [
+      "wwwroot/js/Entity/**/*.js"
+    ],
+    "minify": { "enabled": true }
+  },
+  {
+    "outputFileName": "wwwroot/js/Bundles/infrastructure.js",
+    "inputFiles": [
+      "wwwroot/js/Infrastructure/**/*.js"
+    ],
+    "minify": { "enabled": true }
+  },
+  {
+    "outputFileName": "wwwroot/js/Bundles/pageSeed.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Seed/**/*.js"
+    ],
+    "minify": { "enabled": true }
+  }
 ]
