@@ -1,4 +1,6 @@
-﻿namespace GScope {
+﻿import { Utility } from "../Utility";
+
+namespace GScope {
     export class MappedIds {
         public static get = (references) => {
             var key,

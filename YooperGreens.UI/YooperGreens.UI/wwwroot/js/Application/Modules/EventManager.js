@@ -1,3 +1,6 @@
+"use strict";
+exports.__esModule = true;
+var Utility_1 = require("../Utility");
 var GScope;
 (function (GScope) {
     var EventManager = /** @class */ (function () {
@@ -8,7 +11,7 @@ var GScope;
                 if (_this.context.eventActions instanceof EventManager.EventAction) {
                     _this.context.eventActions = [_this.context.eventActions];
                 }
-                if (Utility.is(_this.context.eventActions).arry().not()) {
+                if (Utility_1.Utility.is(_this.context.eventActions).arry().not()) {
                     throw "Event actions on context is missing or invalid.";
                 }
                 for (var i = 0; i < _this.context.eventActions.length; i++) {
@@ -35,14 +38,14 @@ var GScope;
                         e.stopPropagation();
                     }
                     if (executeTarget) {
-                        if (Utility.is(target).fn().ok()) {
+                        if (Utility_1.Utility.is(target).fn().ok()) {
                             result = target.call(_this.context, e);
                         }
                         else if (target[e.type]) {
                             result = target[e.type].call(_this.context, e);
                         }
                     }
-                    if (_this.context.callbackComplete && Utility.is(_this.context.callbackComplete[id]).fn().ok()) {
+                    if (_this.context.callbackComplete && Utility_1.Utility.is(_this.context.callbackComplete[id]).fn().ok()) {
                         _this.context.callbackComplete[id](result);
                     }
                 }
@@ -50,7 +53,7 @@ var GScope;
             };
         }
         EventManager.prototype.checkEventAction = function (events) {
-            return events ? Utility.is(events).str().ok() ? [events] : events : ["click", "change"];
+            return events ? Utility_1.Utility.is(events).str().ok() ? [events] : events : ["click", "change"];
         };
         EventManager.prototype.add = function (eventAction) {
             var _this = this;
@@ -60,10 +63,10 @@ var GScope;
             if (eventAction instanceof EventManager.EventAction) {
                 eventAction = [eventAction];
             }
-            else if (Utility.is(eventAction).obj().ok() && eventAction.name) {
+            else if (Utility_1.Utility.is(eventAction).obj().ok() && eventAction.name) {
                 eventAction = [new EventManager.EventAction(eventAction)];
             }
-            else if (Utility.is(eventAction).arry().not()) {
+            else if (Utility_1.Utility.is(eventAction).arry().not()) {
                 throw "Only EventAction or objects instances allowed.";
             }
             this.context.eventActions = this.context.eventActions || [];
@@ -84,15 +87,15 @@ var GScope;
     (function (EventManager) {
         var EventAction = /** @class */ (function () {
             function EventAction(objectName, element, events) {
-                if (Utility.is(objectName).str().ok()) {
+                if (Utility_1.Utility.is(objectName).str().ok()) {
                     this.name = objectName;
                     this.element = element;
-                    this.events = Utility.is(events).str().ok() ? [events] : events;
+                    this.events = Utility_1.Utility.is(events).str().ok() ? [events] : events;
                 }
-                else if (Utility.is(objectName).obj().ok()) {
+                else if (Utility_1.Utility.is(objectName).obj().ok()) {
                     this.name = objectName.name || null;
                     this.element = objectName.element || null;
-                    this.events = objectName.events ? Utility.is(events).str().ok() ? [objectName.events] : objectName.events : null;
+                    this.events = objectName.events ? Utility_1.Utility.is(events).str().ok() ? [objectName.events] : objectName.events : null;
                 }
             }
             return EventAction;

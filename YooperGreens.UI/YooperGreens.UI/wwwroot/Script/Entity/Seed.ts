@@ -11,11 +11,11 @@ export class Seed {
     _seedLink: string;
     _seedSupplierLink: string;
     _costs: Cost[];
-    _growingInfo:GrowingInfo;
+    _growingInfo: GrowingInfo;
 
     SeedId(): string;
     SeedId(seedId?: string): string {
-        if (seedId !== null) {
+        if (!Utility.is(seedId).nul().ok()) {
             this._seedId = seedId;
         }
         return seedId;
@@ -23,7 +23,7 @@ export class Seed {
 
     Name(): string;
     Name(name?: string): string {
-        if (name !== null) {
+        if (!Utility.is(name).nul().ok()) {
             this._name = name;
         }
         return name;
@@ -31,7 +31,7 @@ export class Seed {
 
     Description(): string;
     Description(description?: string): string {
-        if (description !== null) {
+        if (!Utility.is(description).nul().ok()) {
             this._description = description;
         }
         return description;
@@ -39,7 +39,7 @@ export class Seed {
 
     Maximum(): number;
     Maximum(maximum?: number): number {
-        if (maximum !== null) {
+        if (!Utility.is(maximum).nul().ok()) {
             this._maximum = maximum;
         }
         return;
@@ -47,7 +47,7 @@ export class Seed {
 
     Minimum(): number;
     Minimum(minimum?: number): number {
-        if (minimum !== null) {
+        if (!Utility.is(minimum).nul().ok()) {
             this._minimum = minimum;
         }
         return;
@@ -55,7 +55,7 @@ export class Seed {
 
     SeedLink(): string;
     SeedLink(seedLink?: string): string {
-        if (seedLink !== null) {
+        if (!Utility.is(seedLink).nul().ok()) {
             this._seedLink = seedLink;
         }
         return;
@@ -63,26 +63,24 @@ export class Seed {
 
     SeedSupplierLink(): string;
     SeedSupplierLink(seedSupplierLink?: string): string {
-        if (seedSupplierLink !== null) {
+        if (!Utility.is(seedSupplierLink).nul().ok()) {
             this._seedSupplierLink = seedSupplierLink;
         }
         return;
     }
 
     Costs(): Cost[];
-    Costs(costs: Cost);
-    Costs(costs?: Cost[]): Cost[] {
-        if (costs !== null) {
-            if (Utility.is(costs).arry().ok()) {
-                this._costs.concat(costs);
-            } else {
-                this._costs.push(costs);
-            }
+    Costs(costs?: Cost[]);
+    Costs(costs?: Cost[], cost?: Cost): Cost[] {
+        if (!Utility.is(costs).nul().ok()) {
+            this._costs.concat(costs);
+        } else if (!Utility.is(cost).nul().ok()) {
+            this._costs.push(cost);
         }
-        return;
+        return this._costs;
     }
 
-    GrowingInfo(growingInfo?: GrowingInfo):GrowingInfo {
+    GrowingInfo(growingInfo?: GrowingInfo): GrowingInfo {
         if (growingInfo !== null) {
             this._growingInfo = growingInfo;
         }

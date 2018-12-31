@@ -1,4 +1,6 @@
-﻿namespace GScope {
+﻿import { Utility } from "../Utility";
+
+namespace GScope {
     export class EventManager {
         raiseEvent: (e: any) => void;
         context: any;

@@ -5,57 +5,55 @@ var Seed = /** @class */ (function () {
     function Seed() {
     }
     Seed.prototype.SeedId = function (seedId) {
-        if (seedId !== null) {
+        if (!Utility_1.Utility.is(seedId).nul().ok()) {
             this._seedId = seedId;
         }
         return seedId;
     };
     Seed.prototype.Name = function (name) {
-        if (name !== null) {
+        if (!Utility_1.Utility.is(name).nul().ok()) {
             this._name = name;
         }
         return name;
     };
     Seed.prototype.Description = function (description) {
-        if (description !== null) {
+        if (!Utility_1.Utility.is(description).nul().ok()) {
             this._description = description;
         }
         return description;
     };
     Seed.prototype.Maximum = function (maximum) {
-        if (maximum !== null) {
+        if (!Utility_1.Utility.is(maximum).nul().ok()) {
             this._maximum = maximum;
         }
         return;
     };
     Seed.prototype.Minimum = function (minimum) {
-        if (minimum !== null) {
+        if (!Utility_1.Utility.is(minimum).nul().ok()) {
             this._minimum = minimum;
         }
         return;
     };
     Seed.prototype.SeedLink = function (seedLink) {
-        if (seedLink !== null) {
+        if (!Utility_1.Utility.is(seedLink).nul().ok()) {
             this._seedLink = seedLink;
         }
         return;
     };
     Seed.prototype.SeedSupplierLink = function (seedSupplierLink) {
-        if (seedSupplierLink !== null) {
+        if (!Utility_1.Utility.is(seedSupplierLink).nul().ok()) {
             this._seedSupplierLink = seedSupplierLink;
         }
         return;
     };
-    Seed.prototype.Costs = function (costs) {
-        if (costs !== null) {
-            if (Utility_1.Utility.is(costs).arry().ok()) {
-                this._costs.concat(costs);
-            }
-            else {
-                this._costs.push(costs);
-            }
+    Seed.prototype.Costs = function (costs, cost) {
+        if (!Utility_1.Utility.is(costs).nul().ok()) {
+            this._costs.concat(costs);
         }
-        return;
+        else if (!Utility_1.Utility.is(cost).nul().ok()) {
+            this._costs.push(cost);
+        }
+        return this._costs;
     };
     Seed.prototype.GrowingInfo = function (growingInfo) {
         if (growingInfo !== null) {

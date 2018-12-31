@@ -1,3 +1,6 @@
+"use strict";
+exports.__esModule = true;
+var Utility_1 = require("../Utility");
 var GScope;
 (function (GScope) {
     var MappedIds = /** @class */ (function () {
@@ -6,10 +9,10 @@ var GScope;
         MappedIds.get = function (references) {
             var key, refs = [], i;
             var ref = {};
-            if (Utility.is(references).obj().ok()) {
+            if (Utility_1.Utility.is(references).obj().ok()) {
                 if (references["key"] && references["value"]) {
                     key = references["key"];
-                    if (!Utility.is(references["value"]).str().ok()) {
+                    if (!Utility_1.Utility.is(references["value"]).str().ok()) {
                         ref[key] = MappedIds.get(references["value"]);
                     }
                     else {
@@ -23,7 +26,7 @@ var GScope;
                     });
                 }
             }
-            else if (Utility.is(references).arry().ok()) {
+            else if (Utility_1.Utility.is(references).arry().ok()) {
                 for (i = 0; i < references.length; i++) {
                     refs.push(MappedIds.get(references[i]));
                 }
