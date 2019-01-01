@@ -1,10 +1,10 @@
-﻿namespace GScope {
-    export namespace Page {
+﻿module GScope {
+    export module Page {
         export class SeedDetails {
             private mapped: any;
-            private readonly _service: ApplicationService.ISeedPageService<JQueryXHR>;
+            private readonly _service: Infrastructure.SeedPages;
 
-            constructor(service: ApplicationService.ISeedPageService<JQueryXHR>) {
+            constructor(service: Infrastructure.SeedPages) {
                 this._service = service;
             }
 
@@ -16,9 +16,10 @@
 
             seedDetails = (e: Event) => {
 
-                this._service.Details("").done((detailsPage) => {
+                this._service.Details("d80948ec-8474-45f6-eeb2-08d66d6a9784").done((detailsPage) => {
                     this.mapped[SeedDetails.ElementIds.Content].innerHTML = detailsPage;
                 })
+
             };
 
             main() {
@@ -41,7 +42,7 @@
             }
         }
 
-        export namespace SeedDetails {
+        export module SeedDetails {
             export enum ElementIds {
                 Details = "seedDetails",
                 Home = "seedHome",

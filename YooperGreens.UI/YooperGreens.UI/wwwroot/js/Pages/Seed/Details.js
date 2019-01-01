@@ -11,7 +11,7 @@ var GScope;
                     });
                 };
                 this.seedDetails = function (e) {
-                    _this._service.Details("").done(function (detailsPage) {
+                    _this._service.Details("d80948ec-8474-45f6-eeb2-08d66d6a9784").done(function (detailsPage) {
                         _this.mapped[SeedDetails.ElementIds.Content].innerHTML = detailsPage;
                     });
                 };

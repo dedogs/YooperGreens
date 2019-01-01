@@ -1,5 +1,5 @@
 ﻿
-namespace GScope {
+module GScope {
     export class Utility {
         static is = (o) => {
             var _okay = true, _or = false, _and = true, toStringx = Object.prototype.toString, setLogic = condition => {

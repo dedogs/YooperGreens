@@ -1,5 +1,5 @@
-﻿namespace GScope {
-    export namespace ApplicationService {
+﻿module GScope {
+    export module ApplicationService {
         export class SeedService implements ISeedService {
             private readonly _repository: RepositoryService.ISeedRepository;
 

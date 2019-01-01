@@ -1,5 +1,5 @@
-﻿namespace GScope {
-    export namespace ApplicationService {
+﻿module GScope {
+    export module ApplicationService {
         export interface ISeedService {
             Count(): number;
             CreateSeed(seed: Entity.Seed): Entity.Seed;

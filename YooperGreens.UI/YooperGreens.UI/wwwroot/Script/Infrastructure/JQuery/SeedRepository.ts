@@ -1,5 +1,5 @@
-﻿namespace GScope {
-    export namespace Infrastructure {
+﻿module GScope {
+    export module Infrastructure {
         export class SeedRepository implements RepositoryService.ISeedRepository {
 
             FindByIdInclude(seedId: string): Entity.Seed {

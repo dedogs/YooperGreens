@@ -1,6 +1,6 @@
 ﻿
-namespace GScope {
-    export namespace Entity {
+module GScope {
+    export module Entity {
         export class Seed {
             _seedId: string;
             _name: string;

@@ -1,6 +1,6 @@
 ﻿
-namespace GScope {
-    export namespace Module {
+module GScope {
+    export module Module {
         export class EventManager {
             raiseEvent: (e: any) => void;
             context: any;
@@ -92,7 +92,7 @@ namespace GScope {
             }
         }
 
-        export namespace EventManager {
+        export module EventManager {
             export class EventAction {
                 name: any;
                 element: any;

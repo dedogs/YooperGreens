@@ -1,5 +1,5 @@
-﻿namespace GScope {
-    export namespace Entity {
+﻿module GScope {
+    export module Entity {
         export class GrowingInfo {
             _culture: string;
             _watering: string;

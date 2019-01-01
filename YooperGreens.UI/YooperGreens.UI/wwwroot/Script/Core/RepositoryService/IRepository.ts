@@ -1,5 +1,5 @@
-﻿namespace GScope {
-    export namespace RepositoryService {
+﻿module GScope {
+    export module RepositoryService {
         export interface IRepository<T, K> {
             Create(item: T): T;
             FindById(id: K): T;

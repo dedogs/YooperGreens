@@ -1,5 +1,5 @@
-﻿namespace GScope {
-    export namespace Infrastructure {
+﻿module GScope {
+    export module Infrastructure {
         export class SeedPages extends ApplicationService.SeedPageService<JQueryXHR> {
             Details(seedId: string): JQueryXHR {
                 return $.ajax({

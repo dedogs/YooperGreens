@@ -1,5 +1,5 @@
-﻿namespace GScope {
-    export namespace Module {
+﻿module GScope {
+    export module Module {
         export class Publisher {
             component: string;
 
@@ -111,7 +111,7 @@
             }
         }
 
-        export namespace Publisher {
+        export module Publisher {
             export class Dispatch {
                 component: string = "Subscription Dispatch";
                 name: string;

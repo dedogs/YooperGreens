@@ -1,5 +1,5 @@
-﻿namespace GScope {
-    export namespace Entity {
+﻿module GScope {
+    export module Entity {
         export enum SeedTypes {
             MicroGreens,
             Garden

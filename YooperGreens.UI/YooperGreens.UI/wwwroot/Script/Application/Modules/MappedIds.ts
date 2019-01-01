@@ -1,5 +1,5 @@
-﻿namespace GScope {
-    export namespace Module {
+﻿module GScope {
+    export module Module {
         export class MappedIds {
             public static get = (references) => {
                 var key,
