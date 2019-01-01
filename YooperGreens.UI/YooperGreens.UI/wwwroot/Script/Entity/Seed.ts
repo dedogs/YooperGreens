@@ -17,7 +17,7 @@ module GScope {
                 if (!Utility.is(seedId).nul().ok()) {
                     this._seedId = seedId;
                 }
-                return seedId;
+                return this._seedId;
             }
 
             Name(): string;
@@ -25,7 +25,7 @@ module GScope {
                 if (!Utility.is(name).nul().ok()) {
                     this._name = name;
                 }
-                return name;
+                return this._name;
             }
 
             Description(): string;
@@ -33,7 +33,7 @@ module GScope {
                 if (!Utility.is(description).nul().ok()) {
                     this._description = description;
                 }
-                return description;
+                return this._description;
             }
 
             Maximum(): number;
@@ -41,7 +41,7 @@ module GScope {
                 if (!Utility.is(maximum).nul().ok()) {
                     this._maximum = maximum;
                 }
-                return;
+                return this._maximum;
             }
 
             Minimum(): number;
@@ -49,7 +49,7 @@ module GScope {
                 if (!Utility.is(minimum).nul().ok()) {
                     this._minimum = minimum;
                 }
-                return;
+                return this._minimum;
             }
 
             SeedLink(): string;
@@ -57,7 +57,7 @@ module GScope {
                 if (!Utility.is(seedLink).nul().ok()) {
                     this._seedLink = seedLink;
                 }
-                return;
+                return this._seedLink;
             }
 
             SeedSupplierLink(): string;
@@ -65,7 +65,7 @@ module GScope {
                 if (!Utility.is(seedSupplierLink).nul().ok()) {
                     this._seedSupplierLink = seedSupplierLink;
                 }
-                return;
+                return this._seedSupplierLink;
             }
 
             Costs(): Cost[];
@@ -83,7 +83,7 @@ module GScope {
                 if (growingInfo !== null) {
                     this._growingInfo = growingInfo;
                 }
-                return growingInfo;
+                return this._growingInfo;
             }
         }
     }

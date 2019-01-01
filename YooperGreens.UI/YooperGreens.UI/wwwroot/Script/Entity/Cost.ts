@@ -11,10 +11,10 @@
         }
 
         export class Cost {
-            _costId: string;
-            _unit: Unit;
-            _size: number;
-            _price: number;
+            private _costId: string;
+            private _unit: Unit;
+            private _size: number;
+            private _price: number;
 
             CostId(): string;
             CostId(costId?: string): string {
@@ -22,7 +22,7 @@
                     this._costId = costId;
                 }
 
-                return costId;
+                return this._costId;
             }
 
             Size(): number;
@@ -31,7 +31,7 @@
                     this._size = size;
                 }
 
-                return size;
+                return this._size;
             }
 
             Price(): number;
@@ -40,7 +40,7 @@
                     this._price = price;
                 }
 
-                return price;
+                return this._price;
             }
 
             Unit(): Unit;
@@ -49,7 +49,7 @@
                     this._unit = unit;
                 }
 
-                return unit;
+                return this._unit;
             }
 
         }

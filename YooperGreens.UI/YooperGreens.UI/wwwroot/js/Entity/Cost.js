@@ -19,25 +19,25 @@ var GScope;
                 if (GScope.Utility.is(costId).str().ok()) {
                     this._costId = costId;
                 }
-                return costId;
+                return this._costId;
             };
             Cost.prototype.Size = function (size) {
                 if (GScope.Utility.is(size).num().ok()) {
                     this._size = size;
                 }
-                return size;
+                return this._size;
             };
             Cost.prototype.Price = function (price) {
                 if (GScope.Utility.is(price).num().ok()) {
                     this._price = price;
                 }
-                return price;
+                return this._price;
             };
             Cost.prototype.Unit = function (unit) {
                 if (unit !== null) {
                     this._unit = unit;
                 }
-                return unit;
+                return this._unit;
             };
             return Cost;
         }());
