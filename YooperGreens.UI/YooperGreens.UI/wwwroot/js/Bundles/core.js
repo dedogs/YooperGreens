@@ -1,4 +1,18 @@
+//# sourceMappingURL=ISeedPageService.js.map
 //# sourceMappingURL=ISeedService.js.map
+var GScope;
+(function (GScope) {
+    var ApplicationService;
+    (function (ApplicationService) {
+        var SeedPageService = /** @class */ (function () {
+            function SeedPageService() {
+            }
+            return SeedPageService;
+        }());
+        ApplicationService.SeedPageService = SeedPageService;
+    })(ApplicationService = GScope.ApplicationService || (GScope.ApplicationService = {}));
+})(GScope || (GScope = {}));
+//# sourceMappingURL=SeedPageService.js.map
 var GScope;
 (function (GScope) {
     var ApplicationService;
@@ -20,7 +34,7 @@ var GScope;
                 return new GScope.Entity.Seed();
             };
             SeedService.prototype.FindSeedByIdInclude = function (seedId) {
-                return this._repository.FindByIdInclude(seedId);
+                return new GScope.Entity.Seed();
             };
             SeedService.prototype.GetAllSeeds = function () {
                 return [];

@@ -2,13 +2,8 @@
     export namespace Infrastructure {
         export class SeedRepository implements RepositoryService.ISeedRepository {
 
-            FindByIdInclude(seedId: string): JQueryXHR {
-                return $.ajax({
-                    url: "/Seeds/Details",
-                    data: { seedId: seedId },
-                    dataType: "html",
-                    type: "GET"
-                });
+            FindByIdInclude(seedId: string): Entity.Seed {
+                throw new Error("Method not implemented.");
             }
             FindById(seedId: string): Entity.Seed {
                 throw new Error("Method not implemented.");

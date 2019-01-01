@@ -19,7 +19,7 @@ var GScope;
                 return new GScope.Entity.Seed();
             };
             SeedService.prototype.FindSeedByIdInclude = function (seedId) {
-                return this._repository.FindByIdInclude(seedId);
+                return new GScope.Entity.Seed();
             };
             SeedService.prototype.GetAllSeeds = function () {
                 return [];

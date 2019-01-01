@@ -2,16 +2,39 @@ var GScope;
 (function (GScope) {
     var Infrastructure;
     (function (Infrastructure) {
-        var SeedRepository = /** @class */ (function () {
-            function SeedRepository() {
+        var SeedPages = /** @class */ (function () {
+            function SeedPages() {
             }
-            SeedRepository.prototype.FindByIdInclude = function (seedId) {
+            SeedPages.prototype.Details = function (seedId) {
                 return $.ajax({
                     url: "/Seeds/Details",
                     data: { seedId: seedId },
                     dataType: "html",
                     type: "GET"
                 });
+            };
+            SeedPages.prototype.Index = function () {
+                return $.ajax({
+                    url: "/Seeds",
+                    dataType: "html",
+                    type: "GET"
+                });
+            };
+            return SeedPages;
+        }());
+        Infrastructure.SeedPages = SeedPages;
+    })(Infrastructure = GScope.Infrastructure || (GScope.Infrastructure = {}));
+})(GScope || (GScope = {}));
+//# sourceMappingURL=SeedPages.js.map
+var GScope;
+(function (GScope) {
+    var Infrastructure;
+    (function (Infrastructure) {
+        var SeedRepository = /** @class */ (function () {
+            function SeedRepository() {
+            }
+            SeedRepository.prototype.FindByIdInclude = function (seedId) {
+                throw new Error("Method not implemented.");
             };
             SeedRepository.prototype.FindById = function (seedId) {
                 throw new Error("Method not implemented.");

@@ -6,12 +6,7 @@ var GScope;
             function SeedRepository() {
             }
             SeedRepository.prototype.FindByIdInclude = function (seedId) {
-                return $.ajax({
-                    url: "/Seeds/Details",
-                    data: { seedId: seedId },
-                    dataType: "html",
-                    type: "GET"
-                });
+                throw new Error("Method not implemented.");
             };
             SeedRepository.prototype.FindById = function (seedId) {
                 throw new Error("Method not implemented.");

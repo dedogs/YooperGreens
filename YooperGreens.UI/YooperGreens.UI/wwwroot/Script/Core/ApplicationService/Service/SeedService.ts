@@ -1,5 +1,4 @@
-﻿
-namespace GScope {
+﻿namespace GScope {
     export namespace ApplicationService {
         export class SeedService implements ISeedService {
             private readonly _repository: RepositoryService.ISeedRepository;
@@ -20,8 +19,8 @@ namespace GScope {
             FindSeedById(seedId: string): Entity.Seed {
                 return new Entity.Seed();
             }
-            FindSeedByIdInclude(seedId: string): JQuery.jqXHR<Entity.Seed> {
-                return this._repository.FindByIdInclude(seedId);
+            FindSeedByIdInclude(seedId: string): Entity.Seed {
+                return new Entity.Seed();
             }
             GetAllSeeds(): Entity.Seed[] {
                 return [];
