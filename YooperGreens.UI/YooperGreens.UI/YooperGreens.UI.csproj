@@ -30,10 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\js\Infrastructure\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <TypeScriptCompile Include="wwwroot\Script\Core\ApplicationService\Service\SeedService.ts" />
     <TypeScriptCompile Include="wwwroot\Script\Core\RepositoryService\IRepository.ts" />
     <TypeScriptCompile Include="wwwroot\Script\Core\RepositoryService\ISeedRepository.ts" />

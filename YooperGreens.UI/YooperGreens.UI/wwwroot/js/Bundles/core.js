@@ -4,7 +4,8 @@ var GScope;
     var ApplicationService;
     (function (ApplicationService) {
         var SeedService = /** @class */ (function () {
-            function SeedService() {
+            function SeedService(repository) {
+                this._repository = repository;
             }
             SeedService.prototype.Count = function () {
                 return 0;
@@ -19,8 +20,7 @@ var GScope;
                 return new GScope.Entity.Seed();
             };
             SeedService.prototype.FindSeedByIdInclude = function (seedId) {
-                GScope.Infrastructure.SeedRepository;
-                return new GScope.Entity.Seed();
+                return this._repository.FindByIdInclude(seedId);
             };
             SeedService.prototype.GetAllSeeds = function () {
                 return [];
