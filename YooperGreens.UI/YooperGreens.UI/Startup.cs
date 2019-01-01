@@ -75,8 +75,12 @@ namespace YooperGreens.UI
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Green}/{action=Index}/{id?}");
+                    name: "Seeds",
+                    template: "{controller=SeedDetails}/{action=Index}/{seedId}");
+
+                routes.MapRoute(
+                    name: "Default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

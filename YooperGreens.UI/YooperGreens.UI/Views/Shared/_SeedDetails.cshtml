@@ -1,0 +1,74 @@
+﻿@model YooperGreensApp.Core.Entity.Jut.Seeds.SeedJut
+
+<h2>Details</h2>
+
+<div>
+    <h4>Seed</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model =>model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model =>model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model =>model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model =>model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model =>model.SeedLink)
+        </dt>
+        <dd>
+            <a href="@Model.SeedLink" title="@Model.Name">@Model.Name</a>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model =>model.Maximum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model =>model.Maximum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model =>model.Minimum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model =>model.Minimum)
+        </dd>
+        <dt>
+            Supplers
+        </dt>
+        <dd>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model =>model.Suppliers[0].Name)
+                        </th>
+                        <th>
+                            Supplier Link
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var supplier in Model.Suppliers)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => supplier.Name)
+                            </td>
+                            <td>
+                                <a href="@supplier.SupplierLink" title="@supplier.Name">@supplier.Name</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a id="seedEdit" title="Seed Edit">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
