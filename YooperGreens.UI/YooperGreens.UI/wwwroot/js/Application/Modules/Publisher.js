@@ -3,101 +3,68 @@ var GScope;
     var Module;
     (function (Module) {
         var Publisher = /** @class */ (function () {
-            function Publisher(name) {
+            function Publisher(publications) {
                 var _this = this;
-                this.component = name;
-                this.publisher = {};
-                this.publisher.publications = this.publisher.publications || {};
-                this.publication = function (publication) {
-                    _this.publisher.publications[publication] = _this.publisher.publications[publication] || {};
-                };
-                this.subscribe = function (publication, subscription, dispatch) {
-                    if (!_this.publisher.publications[publication]) {
-                        return;
-                    }
-                    _this.publisher.publications[publication].subscriptions = _this.publisher.publications[publication].subscriptions || {};
-                    _this.publisher.publications[publication].subscriptions[subscription] = _this.publisher.publications[publication].subscriptions[subscription] || {};
-                    //Add Subscription
-                    _this.publisher.publications[publication].subscriptions[subscription] = dispatch;
-                };
-                this.publish = function (publication, data) {
-                    var context = _this;
-                    if (!(_this.publisher
-                        && (_this.publisher.publications && _this.publisher.publications[publication] && _this.publisher.publications[publication].subscriptions))) {
-                        return;
-                    }
-                    Object.keys(_this.publisher.publications[publication].subscriptions).forEach(function (s) {
-                        var action = function (data) {
-                            var def = $.Deferred();
-                            try {
-                                context.publisher.publications[publication].subscriptions[s].action(data);
-                                def.resolve(data);
-                            }
-                            catch (e) {
-                                def.reject(data);
-                            }
-                            return def.promise();
-                        }, callback = function (data) {
-                            var def = $.Deferred();
-                            if (context.publisher.publications[publication].subscriptions[s].callback) {
-                                try {
-                                    context.publisher.publications[publication].subscriptions[s].callback(data);
-                                    def.resolve();
+                this.publications = {
+                    count: function () {
+                        if (_this._publications) {
+                            return Object.keys(_this._publications).length;
+                        }
+                        return null;
+                    },
+                    exists: function (publication) {
+                        return typeof _this._publications[publication] !== "undefined";
+                    },
+                    subscriptions: function (publication) {
+                        if (_this._publications[publication]) {
+                            return (Object.keys(_this._publications[publication])).length;
+                        }
+                        return null;
+                    },
+                    subscribe: function (subscript, publication, action, callback) {
+                        if (_this._publications[publication]) {
+                            _this._publications[publication][subscript] = _this._publications[publication][subscript] || [];
+                            _this._publications[publication][subscript].push({
+                                action: function (data) {
+                                    return $.Deferred(function (d) {
+                                        action(data);
+                                        d.resolve();
+                                    }).promise();
+                                },
+                                callback: function (data) {
+                                    return $.Deferred(function (d) {
+                                        callback(data);
+                                        d.resolve();
+                                    }).promise();
                                 }
-                                catch (e) {
-                                    def.reject(data);
+                            });
+                        }
+                    },
+                    publish: function (publication, data) {
+                        if (!(_this._publications[publication])) {
+                            return;
+                        }
+                        if (_this._publications[publication]) {
+                            var _that = _this;
+                            Object.keys(_this._publications[publication]).forEach(function (subscript) {
+                                for (var i = 0; i < _that._publications[publication][subscript].length; i++) {
+                                    var current = _that._publications[publication][subscript][i];
+                                    current.action(data).then(function () {
+                                        current.callback(data);
+                                    });
                                 }
-                            }
-                            return def.promise();
-                        }, fail = _this.publisher.publications[publication].subscriptions[s].fail;
-                        action(data).done(function (data) {
-                            callback(data).fail(fail);
-                        }).fail(fail);
-                    });
+                            });
+                        }
+                    }
                 };
-                //this.getPublications = () => {
-                //    if (this.publisher.subscriptions) {
-                //        return Object.keys(this.publisher.subscriptions).length;
-                //    }
-                //    return 0;
-                //}
-                //this.getSubscriptions = (publication: string) => {
-                //    if (this.publisher.subscriptions[publication]) {
-                //        return this.publisher.subscriptions[publication].contracts.length;
-                //    }
-                //    return 0;
-                //}
-                //this.removePublication = (publication: string) => {
-                //    delete this.publisher.subscriptions[publication];
-                //}
-                //this.removeSubscription = (publication: string, subscription: string) => {
-                //    for (var i = 0; i < this.publisher.subscriptions[publication].contracts.length; i++) {
-                //        if (this.publisher.subscriptions[publication].contracts[i].name === subscription) {
-                //            this.publisher.subscriptions[publication].contracts.splice(i, 1);
-                //            break;
-                //        }
-                //    }
-                //}
-                //this.clear = () => {
-                //    this.publisher = new Publisher.Subscription();
-                //}
+                this._publications = {};
+                Object.keys(publications).forEach(function (name) {
+                    _this._publications[name] = publications[name];
+                });
             }
             return Publisher;
         }());
         Module.Publisher = Publisher;
-        (function (Publisher) {
-            var Dispatch = /** @class */ (function () {
-                function Dispatch(name, action, callback, fail) {
-                    this.component = "Subscription Dispatch";
-                    this.name = name;
-                    this.action = action;
-                    this.callback = callback || null;
-                    this.fail = fail || null;
-                }
-                return Dispatch;
-            }());
-            Publisher.Dispatch = Dispatch;
-        })(Publisher = Module.Publisher || (Module.Publisher = {}));
     })(Module = GScope.Module || (GScope.Module = {}));
 })(GScope || (GScope = {}));
 //# sourceMappingURL=Publisher.js.map

@@ -3,9 +3,15 @@
         export class SeedDetails {
             private mapped: any;
             private readonly _service: Infrastructure.SeedPages;
+            
+            publisher: Module.Publisher;
+            private publications: {} = {
+                details: {}
+            };
 
             constructor(service: Infrastructure.SeedPages) {
                 this._service = service;
+                this.publisher = new Module.Publisher(this.publications);
             }
 
             seedHome = (e: Event) => {
@@ -20,6 +26,7 @@
                     this.mapped[SeedDetails.ElementIds.Content].innerHTML = detailsPage;
                 })
 
+                this.publisher.publications.subscribe()
             };
 
             main() {
@@ -34,11 +41,11 @@
                     ])
                 })()
 
-
                 manager.add([new Module.EventManager.EventAction(Details, this.mapped[Details], "click")]);
                 manager.add([new Module.EventManager.EventAction(Home, this.mapped[Home], "click")]);
 
                 manager.attach();
+
             }
         }
 

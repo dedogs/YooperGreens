@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\Bundles\core.js" />
     <Content Remove="wwwroot\Script\Core\ApplicationService\ISeedPageService.ts" />
     <Content Remove="wwwroot\Script\Core\ApplicationService\Service\SeedPageService.ts" />
     <Content Remove="wwwroot\Script\Core\ApplicationService\Service\SeedService.ts" />
@@ -21,6 +22,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\Bundles\core.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\ItemTemplates\JavaScript\Code\qunitfile\qunitfile.ts" Link="qunitfile.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\Bundles\core.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.8.391" />
     <PackageReference Include="BuildBundlerMinifier-Typescript" Version="2.1.258" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />

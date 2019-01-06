@@ -5,6 +5,9 @@ var GScope;
         var SeedDetails = /** @class */ (function () {
             function SeedDetails(service) {
                 var _this = this;
+                this.publications = {
+                    details: {}
+                };
                 this.seedHome = function (e) {
                     _this._service.Index().done(function (indexPage) {
                         _this.mapped[SeedDetails.ElementIds.Content].innerHTML = indexPage;
@@ -14,8 +17,10 @@ var GScope;
                     _this._service.Details("d80948ec-8474-45f6-eeb2-08d66d6a9784").done(function (detailsPage) {
                         _this.mapped[SeedDetails.ElementIds.Content].innerHTML = detailsPage;
                     });
+                    _this.publisher.publications.subscribe();
                 };
                 this._service = service;
+                this.publisher = new GScope.Module.Publisher(this.publications);
             }
             SeedDetails.prototype.main = function () {
                 var manager = new GScope.Module.EventManager(this);
