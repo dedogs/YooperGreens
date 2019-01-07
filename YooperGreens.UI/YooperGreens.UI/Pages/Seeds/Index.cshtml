@@ -50,9 +50,9 @@
                 @Html.DisplayFor(modelItem => item.Minimum)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.SeedId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.SeedId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.SeedId">Delete</a>
+                <a asp-page="./Edit" asp-route-seedid="@item.SeedId">Edit</a> |
+                <a asp-page="./Details" asp-route-seedid="@item.SeedId">Details</a> |
+                <a asp-page="./Delete" asp-route-seedid="@item.SeedId">Delete</a>
             </td>
         </tr>
 }

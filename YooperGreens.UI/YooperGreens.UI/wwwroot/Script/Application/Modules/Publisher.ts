@@ -4,15 +4,22 @@
             component: string;
 
             private readonly _publications: {};
+            private readonly _initPublication;
 
-            constructor(publications: {}) {
+            constructor(pub: {}) {
                 this._publications = {};
-                Object.keys(publications).forEach((name: string) => {
-                    this._publications[name] = publications[name];
+                Object.keys(pub).forEach((name: string) => {
+                    this._publications[name] = pub[name];
                 })
+                this._initPublication = pub;
             }
 
-            publications: {} = {
+            publications: Publisher.Publishication = {
+                clear: (): void => {
+                    Object.keys(this._initPublication).forEach((name: string) => {
+                        this._publications[name] = this._initPublication[name];
+                    })
+                },
                 count: (): number => {
                     if (this._publications) {
                         return Object.keys(this._publications).length;
@@ -58,15 +65,29 @@
                     if (this._publications[publication]) {
                         var _that = this;
                         Object.keys(this._publications[publication]).forEach(function (subscript) {
-                            for (var i = 0; i < _that._publications[publication][subscript].length; i++) {
-                                var current = _that._publications[publication][subscript][i];
-                                current.action(data).then(function () {
-                                    current.callback(data);
-                                })
+                            if (GScope.Utility.is(_that._publications[publication][subscript]).arry().ok()) {
+                                for (var i = 0; i < _that._publications[publication][subscript].length; i++) {
+                                    var current = _that._publications[publication][subscript][i];
+                                    current.action(data).then(function () {
+                                        current.callback(data);
+                                    })
+                                }
                             }
                         })
                     }
                 }
+            }
+        }
+
+
+        export module Publisher {
+            export class Publishication {
+                clear: () => void;
+                count: () => number;
+                exists: (publication: string) => boolean;
+                subscriptions: (publication: string) => number;
+                subscribe: (subscript: string, publication: string, action: (data: any) => void, callback: (data: any) => void) => void;
+                publish: (publication: string, data: any) => void;
             }
         }
     }

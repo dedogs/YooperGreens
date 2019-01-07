@@ -61,3 +61,27 @@ QUnit.test("", function (assert) {
     publisher.publications.subscribe("subscriber2", "test1", actionMethod, callbackMethod);
     publisher.publications.publish("test1", { assert: assert, value: 1 });
 });
+QUnit.test("", function (assert) {
+    assert.expect(2);
+    done1 = assert.async();
+
+    var o = {
+        test1: {}
+    };
+    var publisher = new GScope.Module.Publisher(o);
+    publisher.publications.subscribe("subscriber1", "test1", actionMethod, callbackMethod);
+
+    publisher.publications.publish("test1", { assert: assert, value: 1 });
+});
+QUnit.test("", function (assert) {
+    assert.expect(2);
+    done1 = assert.async();
+
+    var o = {
+        test1: {name:"test1"}
+    };
+    var publisher = new GScope.Module.Publisher(o);
+    publisher.publications.subscribe("subscriber1", "test1", actionMethod, callbackMethod);
+
+    publisher.publications.publish("test1", { assert: assert, value: 1 });
+});

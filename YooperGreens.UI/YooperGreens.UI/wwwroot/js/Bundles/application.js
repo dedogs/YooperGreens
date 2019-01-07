@@ -318,9 +318,14 @@ var GScope;
     var Module;
     (function (Module) {
         var Publisher = /** @class */ (function () {
-            function Publisher(publications) {
+            function Publisher(pub) {
                 var _this = this;
                 this.publications = {
+                    clear: function () {
+                        Object.keys(_this._initPublication).forEach(function (name) {
+                            _this._publications[name] = _this._initPublication[name];
+                        });
+                    },
                     count: function () {
                         if (_this._publications) {
                             return Object.keys(_this._publications).length;
@@ -362,24 +367,35 @@ var GScope;
                         if (_this._publications[publication]) {
                             var _that = _this;
                             Object.keys(_this._publications[publication]).forEach(function (subscript) {
-                                for (var i = 0; i < _that._publications[publication][subscript].length; i++) {
-                                    var current = _that._publications[publication][subscript][i];
-                                    current.action(data).then(function () {
-                                        current.callback(data);
-                                    });
+                                if (GScope.Utility.is(_that._publications[publication][subscript]).arry().ok()) {
+                                    for (var i = 0; i < _that._publications[publication][subscript].length; i++) {
+                                        var current = _that._publications[publication][subscript][i];
+                                        current.action(data).then(function () {
+                                            current.callback(data);
+                                        });
+                                    }
                                 }
                             });
                         }
                     }
                 };
                 this._publications = {};
-                Object.keys(publications).forEach(function (name) {
-                    _this._publications[name] = publications[name];
+                Object.keys(pub).forEach(function (name) {
+                    _this._publications[name] = pub[name];
                 });
+                this._initPublication = pub;
             }
             return Publisher;
         }());
         Module.Publisher = Publisher;
+        (function (Publisher) {
+            var Publishication = /** @class */ (function () {
+                function Publishication() {
+                }
+                return Publishication;
+            }());
+            Publisher.Publishication = Publishication;
+        })(Publisher = Module.Publisher || (Module.Publisher = {}));
     })(Module = GScope.Module || (GScope.Module = {}));
 })(GScope || (GScope = {}));
 //# sourceMappingURL=Publisher.js.map
