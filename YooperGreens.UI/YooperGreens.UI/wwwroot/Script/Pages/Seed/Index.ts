@@ -1,7 +1,7 @@
 ﻿module GScope {
     export module Page {
-        export class SeedDetails {
-            private static instance: SeedDetails;
+        export class SeedIndex {
+            private static instance: SeedIndex;
             private manager: Module.EventManager;
 
             private mapped: any;
@@ -13,10 +13,10 @@
             }
 
             private constructor(service: Infrastructure.SeedPages) {
-                const { Details, Home, Content } = SeedDetails.ElementIds;
+                const { Details, Home, Content } = SeedIndex.ElementIds;
 
                 this._service = service;
-                this.publisher = new Module.Publisher(this.publications);
+                //this.publisher = new Module.Publisher(this.publications);
                 this.manager = new Module.EventManager(this);
 
                 this.mapped = (() => {
@@ -34,30 +34,31 @@
             }
 
             static getInstance() {
-                if (!SeedDetails.instance) {
-                    SeedDetails.instance = new SeedDetails(new GScope.Infrastructure.SeedPages());
+                if (!SeedIndex.instance) {
+                    SeedIndex.instance = new SeedIndex(new GScope.Infrastructure.SeedPages());
                 }
 
-                return SeedDetails.instance;
+                return SeedIndex.instance;
             }
 
             seedHome = (e: Event) => {
+                alert("clicked");
                 this._service.Index().done((indexPage) => {
-                    this.mapped[SeedDetails.ElementIds.Content].innerHTML = indexPage;
+                    this.mapped[SeedIndex.ElementIds.Content].innerHTML = indexPage;
                 });
             };
 
             seedDetails = (e: Event) => {
 
                 this._service.Details("d80948ec-8474-45f6-eeb2-08d66d6a9784").done((detailsPage) => {
-                    this.mapped[SeedDetails.ElementIds.Content].innerHTML = detailsPage;
+                    this.mapped[SeedIndex.ElementIds.Content].innerHTML = detailsPage;
                     this.publisher.publications.publish("seedDetails",this.publications.details.name);
                 })
 
             };
         }
 
-        export module SeedDetails {
+        export module SeedIndex {
             export enum ElementIds {
                 Details = "seedDetails",
                 Home = "seedHome",
@@ -67,3 +68,4 @@
     }
 }
 
+GScope.Page.SeedIndex.getInstance();

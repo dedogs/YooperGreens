@@ -17,7 +17,7 @@ namespace YooperGreensApp.Infrastructure.Data
         }
         public YooperGreensDbContext(DbContextOptions<YooperGreensDbContext> options)
         {
-
+           
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -1,0 +1,55 @@
+﻿@page
+@model YooperGreens.UI.Pages.Seeds.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Seed</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Seeds.SeedId" />
+            <div class="form-group">
+                <label asp-for="Seeds.Name" class="control-label"></label>
+                <input asp-for="Seeds.Name" class="form-control" />
+                <span asp-validation-for="Seeds.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seeds.Description" class="control-label"></label>
+                <input asp-for="Seeds.Description" class="form-control" />
+                <span asp-validation-for="Seeds.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seeds.SeedLink" class="control-label"></label>
+                <input asp-for="Seeds.SeedLink" class="form-control" />
+                <span asp-validation-for="Seeds.SeedLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seeds.Maximum" class="control-label"></label>
+                <input asp-for="Seeds.Maximum" class="form-control" />
+                <span asp-validation-for="Seeds.Maximum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seeds.Minimum" class="control-label"></label>
+                <input asp-for="Seeds.Minimum" class="form-control" />
+                <span asp-validation-for="Seeds.Minimum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,5 +1,17 @@
 var GScope;
 (function (GScope) {
+    var Main = /** @class */ (function () {
+        function Main() {
+        }
+        Main.PageLoad = function () {
+        };
+        return Main;
+    }());
+    GScope.Main = Main;
+})(GScope || (GScope = {}));
+//# sourceMappingURL=Application.js.map
+var GScope;
+(function (GScope) {
     var Utility = /** @class */ (function () {
         function Utility() {
         }
@@ -318,42 +330,39 @@ var GScope;
     var Module;
     (function (Module) {
         var Publisher = /** @class */ (function () {
-            function Publisher(pub) {
+            function Publisher(stories) {
                 var _this = this;
                 this.publications = {
-                    clear: function () {
-                        Object.keys(_this._initPublication).forEach(function (name) {
-                            _this._publications[name] = _this._initPublication[name];
+                    clear: function (story) {
+                        Object.keys(_this._publications).forEach(function (story) {
+                            _this._publications[name] = _this._publications[name];
                         });
                     },
                     count: function () {
-                        if (_this._publications) {
-                            return Object.keys(_this._publications).length;
+                        return Object.keys(_this._publications).length;
+                    },
+                    exists: function (story) {
+                        return typeof _this._publications[story] !== "undefined" && _this._publications[story] instanceof Publisher.Story;
+                    },
+                    subscriptions: function (story) {
+                        if (_this._publications[story]) {
+                            return (Object.keys(_this._publications[story])).length;
                         }
                         return null;
                     },
-                    exists: function (publication) {
-                        return typeof _this._publications[publication] !== "undefined";
-                    },
-                    subscriptions: function (publication) {
-                        if (_this._publications[publication]) {
-                            return (Object.keys(_this._publications[publication])).length;
-                        }
-                        return null;
-                    },
-                    subscribe: function (subscript, publication, action, callback) {
-                        if (_this._publications[publication]) {
-                            _this._publications[publication][subscript] = _this._publications[publication][subscript] || [];
-                            _this._publications[publication][subscript].push({
+                    subscribe: function (story, subscription) {
+                        if (_this._publications[story]) {
+                            _this._publications[story][subscription.name] = _this._publications[story][subscription.name] || [];
+                            _this._publications[story][subscription.name].push({
                                 action: function (data) {
                                     return $.Deferred(function (d) {
-                                        action(data);
+                                        subscription.action(data);
                                         d.resolve();
                                     }).promise();
                                 },
                                 callback: function (data) {
                                     return $.Deferred(function (d) {
-                                        callback(data);
+                                        subscription.callback(data);
                                         d.resolve();
                                     }).promise();
                                 }
@@ -380,10 +389,13 @@ var GScope;
                     }
                 };
                 this._publications = {};
-                Object.keys(pub).forEach(function (name) {
-                    _this._publications[name] = pub[name];
-                });
-                this._initPublication = pub;
+                if (stories) {
+                    Object.keys(stories).forEach(function (story) {
+                        if (stories[story] instanceof Publisher.Story) {
+                            _this._publications[stories[story].name] = stories[story];
+                        }
+                    });
+                }
             }
             return Publisher;
         }());
@@ -395,6 +407,58 @@ var GScope;
                 return Publishication;
             }());
             Publisher.Publishication = Publishication;
+            var Story = /** @class */ (function () {
+                function Story(name, subscription) {
+                    this._name = name;
+                    this._subscription = subscription;
+                }
+                Object.defineProperty(Story.prototype, "name", {
+                    get: function () {
+                        return this._name;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Story.prototype, "subscription", {
+                    get: function () {
+                        return this._subscription;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Story;
+            }());
+            Publisher.Story = Story;
+            var Subscription = /** @class */ (function () {
+                function Subscription(name, action, callback) {
+                    this._name = name;
+                    this._action = action;
+                    this._callback = callback;
+                }
+                Object.defineProperty(Subscription.prototype, "name", {
+                    get: function () {
+                        return this._name;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Subscription.prototype, "action", {
+                    get: function () {
+                        return this._action;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Subscription.prototype, "callback", {
+                    get: function () {
+                        return this._callback;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Subscription;
+            }());
+            Publisher.Subscription = Subscription;
         })(Publisher = Module.Publisher || (Module.Publisher = {}));
     })(Module = GScope.Module || (GScope.Module = {}));
 })(GScope || (GScope = {}));

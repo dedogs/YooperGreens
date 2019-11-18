@@ -2,26 +2,27 @@ var GScope;
 (function (GScope) {
     var Page;
     (function (Page) {
-        var SeedDetails = /** @class */ (function () {
-            function SeedDetails(service) {
+        var SeedIndex = /** @class */ (function () {
+            function SeedIndex(service) {
                 var _this = this;
                 this.publications = {
                     details: { name: "details" }
                 };
                 this.seedHome = function (e) {
+                    alert("clicked");
                     _this._service.Index().done(function (indexPage) {
-                        _this.mapped[SeedDetails.ElementIds.Content].innerHTML = indexPage;
+                        _this.mapped[SeedIndex.ElementIds.Content].innerHTML = indexPage;
                     });
                 };
                 this.seedDetails = function (e) {
                     _this._service.Details("d80948ec-8474-45f6-eeb2-08d66d6a9784").done(function (detailsPage) {
-                        _this.mapped[SeedDetails.ElementIds.Content].innerHTML = detailsPage;
+                        _this.mapped[SeedIndex.ElementIds.Content].innerHTML = detailsPage;
                         _this.publisher.publications.publish("seedDetails", _this.publications.details.name);
                     });
                 };
-                var _a = SeedDetails.ElementIds, Details = _a.Details, Home = _a.Home, Content = _a.Content;
+                var _a = SeedIndex.ElementIds, Details = _a.Details, Home = _a.Home, Content = _a.Content;
                 this._service = service;
-                this.publisher = new GScope.Module.Publisher(this.publications);
+                //this.publisher = new Module.Publisher(this.publications);
                 this.manager = new GScope.Module.EventManager(this);
                 this.mapped = (function () {
                     return GScope.Module.MappedIds.get([
@@ -34,23 +35,24 @@ var GScope;
                 this.manager.add([new GScope.Module.EventManager.EventAction(Home, this.mapped[Home], "click")]);
                 this.manager.attach();
             }
-            SeedDetails.getInstance = function () {
-                if (!SeedDetails.instance) {
-                    SeedDetails.instance = new SeedDetails(new GScope.Infrastructure.SeedPages());
+            SeedIndex.getInstance = function () {
+                if (!SeedIndex.instance) {
+                    SeedIndex.instance = new SeedIndex(new GScope.Infrastructure.SeedPages());
                 }
-                return SeedDetails.instance;
+                return SeedIndex.instance;
             };
-            return SeedDetails;
+            return SeedIndex;
         }());
-        Page.SeedDetails = SeedDetails;
-        (function (SeedDetails) {
+        Page.SeedIndex = SeedIndex;
+        (function (SeedIndex) {
             var ElementIds;
             (function (ElementIds) {
                 ElementIds["Details"] = "seedDetails";
                 ElementIds["Home"] = "seedHome";
                 ElementIds["Content"] = "renderContent";
-            })(ElementIds = SeedDetails.ElementIds || (SeedDetails.ElementIds = {}));
-        })(SeedDetails = Page.SeedDetails || (Page.SeedDetails = {}));
+            })(ElementIds = SeedIndex.ElementIds || (SeedIndex.ElementIds = {}));
+        })(SeedIndex = Page.SeedIndex || (Page.SeedIndex = {}));
     })(Page = GScope.Page || (GScope.Page = {}));
 })(GScope || (GScope = {}));
-//# sourceMappingURL=Details.js.map
+GScope.Page.SeedIndex.getInstance();
+//# sourceMappingURL=Index.js.map

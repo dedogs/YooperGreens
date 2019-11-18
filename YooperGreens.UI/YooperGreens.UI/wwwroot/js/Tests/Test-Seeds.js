@@ -6,7 +6,7 @@
 /// <reference path="../bundles/pageseed.js" />
 
 var done1,
-    scope = GScope.Page.SeedDetails.getInstance(),
+    scope = GScope.Page.SeedIndex.getInstance(),
     publisher = scope.publisher;
 
 var actionMethod = function (data) {
@@ -24,13 +24,13 @@ QUnit.module("Publisher", {
 });
 
 QUnit.test("", function (assert) {
-    assert.ok(GScope.Page.SeedDetails, "SeedDetails class is defined");
+    assert.ok(GScope.Page.SeedIndex, "SeedIndex class is defined");
 });
 QUnit.test("", function (assert) {
-    assert.ok(GScope.Page.SeedDetails.getInstance, "getInstance propety is defined.");
+    assert.ok(GScope.Page.SeedIndex.getInstance, "getInstance propety is defined.");
 });
 QUnit.test("", function (assert) {
-    assert.ok(GScope.Page.SeedDetails.getInstance() instanceof GScope.Page.SeedDetails, "SeedDetails is initialized");
+    assert.ok(GScope.Page.SeedIndex.getInstance() instanceof GScope.Page.SeedIndex, "SeedIndex is initialized");
 });
 QUnit.test("", function (assert) {
     assert.equal(publisher.publications.count(), 1, "Currently one publication.");

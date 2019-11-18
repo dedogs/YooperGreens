@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using YooperGreensApp.Core.Entity;
+using YooperGreensApp.Core.Entity.Jut.Seeds;
 using YooperGreensApp.Infrastructure.Data;
 
 namespace YooperGreens.UI.Pages.Seeds
@@ -21,18 +22,18 @@ namespace YooperGreens.UI.Pages.Seeds
         }
 
         [BindProperty]
-        public Seed Seed { get; set; }
+        public SeedJut Seeds { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(Guid? seedid)
         {
-            if (id == null)
+            if (seedid == null)
             {
                 return NotFound();
             }
 
-            Seed = await _context.Seeds.FirstOrDefaultAsync(m => m.SeedId == id);
+            Seeds = SeedMapJut.Jut( await _context.Seeds.FirstOrDefaultAsync(m => m.SeedId == seedid));
 
-            if (Seed == null)
+            if (Seeds == null)
             {
                 return NotFound();
             }
@@ -46,7 +47,9 @@ namespace YooperGreens.UI.Pages.Seeds
                 return Page();
             }
 
-            _context.Attach(Seed).State = EntityState.Modified;
+            Seed seed = SeedMapJut.JutToSeed(Seeds);
+
+            _context.Attach(seed).State = EntityState.Modified;
 
             try
             {
@@ -54,7 +57,7 @@ namespace YooperGreens.UI.Pages.Seeds
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SeedExists(Seed.SeedId))
+                if (!SeedExists(Seeds.SeedId))
                 {
                     return NotFound();
                 }

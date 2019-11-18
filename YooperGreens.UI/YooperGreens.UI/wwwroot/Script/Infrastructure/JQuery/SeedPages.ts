@@ -3,7 +3,7 @@
         export class SeedPages extends ApplicationService.SeedPageService<JQueryXHR> {
             Details(seedId: string): JQueryXHR {
                 return $.ajax({
-                    url: "/Seeds/Details",
+                    url: "/Seed/Details",
                     data: { seedId: seedId },
                     dataType: "html",
                     type: "GET"

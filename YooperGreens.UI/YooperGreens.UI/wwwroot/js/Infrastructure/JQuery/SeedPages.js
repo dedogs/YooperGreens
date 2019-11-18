@@ -22,7 +22,7 @@ var GScope;
             }
             SeedPages.prototype.Details = function (seedId) {
                 return $.ajax({
-                    url: "/Seeds/Details",
+                    url: "/Seed/Details",
                     data: { seedId: seedId },
                     dataType: "html",
                     type: "GET"

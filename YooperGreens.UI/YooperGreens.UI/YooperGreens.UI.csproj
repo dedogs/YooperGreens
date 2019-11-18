@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\js\Bundles\core.js" />
+    <Content Remove="wwwroot\Script\Application\Application.ts" />
     <Content Remove="wwwroot\Script\Core\ApplicationService\ISeedPageService.ts" />
     <Content Remove="wwwroot\Script\Core\ApplicationService\Service\SeedPageService.ts" />
     <Content Remove="wwwroot\Script\Core\ApplicationService\Service\SeedService.ts" />
@@ -39,7 +40,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +48,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\Script\Application\Application.ts" />
     <TypeScriptCompile Include="wwwroot\Script\Core\ApplicationService\ISeedPageService.ts" />
     <TypeScriptCompile Include="wwwroot\Script\Core\ApplicationService\Service\SeedPageService.ts" />
     <TypeScriptCompile Include="wwwroot\Script\Core\ApplicationService\Service\SeedService.ts" />
@@ -58,7 +60,10 @@
     <TypeScriptCompile Include="wwwroot\Script\Entity\Seed.ts" />
     <TypeScriptCompile Include="wwwroot\Script\Infrastructure\JQuery\SeedPages.ts" />
     <TypeScriptCompile Include="wwwroot\Script\Infrastructure\JQuery\SeedRepository.ts" />
-    <TypeScriptCompile Include="wwwroot\Script\Pages\Seed\Details.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\Pages\Seed\" />
   </ItemGroup>
 
 </Project>
